@@ -8,6 +8,11 @@
             <ion-icon name="chevron-back" style="color: white; font-size: 40px;"></ion-icon>
           </ion-button>
     </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="openMenu()" slot="start">
+        <ion-icon name="menu-outline" style="color: white; font-size: 32px;"></ion-icon>
+      </ion-button>
+  </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -46,7 +51,6 @@
                     <ion-select-option value="Sunday 7:00 am">Sunday 7:00 am</ion-select-option>
                     <ion-select-option value="Sunday 9:30 am">Sunday 9:30 am</ion-select-option>
                     <ion-select-option value="Sunday 5:45 pm">Sunday 5:45 pm</ion-select-option>
-                    <ion-select-option value="Thursday 12 noon">Thursday 12 noon</ion-select-option>
                     <ion-select-option value="Other">Other</ion-select-option>
                   </ion-select>
                 </ion-item>
