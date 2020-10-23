@@ -4,10 +4,15 @@
       <h1>BLOG/NEWS</h1>
     </ion-title>
     <ion-buttons slot="start">
-        <ion-button (click)="back()" slot="start">
-            <ion-icon name="chevron-back" style="color: white; font-size: 40px;"></ion-icon>
+        <ion-button (click)="back()" slot="start" >
+            <ion-icon name="chevron-back" style="color: white; font-size: 40px;" ></ion-icon>
           </ion-button>
     </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="openMenu()" slot="start">
+        <ion-icon name="menu-outline" style="color: white; font-size: 32px;"></ion-icon>
+      </ion-button>
+  </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

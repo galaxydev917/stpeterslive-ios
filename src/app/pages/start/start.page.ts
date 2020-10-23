@@ -20,12 +20,11 @@ export class StartPage implements OnInit {
     }
 
   ionViewWillEnter() {
-   }
+  }
 
    ngOnInit() {
     this.rowHeight = (this.plt.height() - 110) / 3 + 'px';
   }
 
-
-
 }
+//ionic cordova run ios --target="358CE521-EDA7-44EA-8D2B-BD05B89476AA" --livereload
