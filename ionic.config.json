@@ -1,5 +1,7 @@
 {
-  "name": "stpeterslive-ios",
-  "integrations": {},
+  "name": "stpeterslive_ios",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

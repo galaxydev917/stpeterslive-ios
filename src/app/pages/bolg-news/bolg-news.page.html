@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar class="header-background-color">
+    <ion-title class="ion-text-capitalize">
+      <h1>BLOG/NEWS</h1>
+    </ion-title>
+    <ion-buttons slot="start">
+        <ion-button (click)="back()" slot="start">
+            <ion-icon name="chevron-back" style="color: white; font-size: 40px;"></ion-icon>
+          </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let item of blogList; let i = index">
+    <ion-item (click)="viewBlog(item)">
+      <ion-thumbnail slot="start" *ngIf="item.better_featured_image != null">
+        <img src={{item.better_featured_image.media_details.sizes.thumbnail.source_url}}>
+      </ion-thumbnail>
+      <ion-thumbnail slot="start" *ngIf="item.better_featured_image == null">
+        <img src="./assets/images/no-image.png">
+      </ion-thumbnail>      
+      <ion-label>
+        <h2>{{item.title.rendered }}</h2>
+        <p style="font-family: 'Quicksand-Regular'; color: black;">{{item.date | date:'MMM d, y'}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <div class="spinner" *ngIf="isLoadingMore">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+  
+  <ion-button  *ngIf="!isLoading" class="button-more" mode="ios" fill="solid"  size="default" shape="round" expand="block" (click)="viewMore();">
+    View More
+  </ion-button>
+  <app-loading *ngIf="isLoading"></app-loading>
+
+</ion-content>

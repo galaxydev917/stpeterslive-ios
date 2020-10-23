@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar class="header-background-color">
+    <ion-title class="ion-text-capitalize">
+      <h1>FIND US</h1>
+    </ion-title>
+    <ion-buttons slot="start">
+        <ion-button (click)="back()" slot="start">
+            <ion-icon name="chevron-back" style="color: white; font-size: 40px;"></ion-icon>
+          </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item  lines="none">
+      <ion-thumbnail slot="start">
+        <img src="./assets/images/web.png" />
+      </ion-thumbnail>
+      <ion-label>
+        <a href="#" (click)="openWithSystemBrowser('https://www.stpetersgc.com.au/')"><p>stpetersgc.com.au</p></a> 
+      </ion-label>
+    </ion-item>    
+    <ion-item lines="none">
+      <ion-thumbnail slot="start">
+        <img src="./assets/images/facebook.png" />
+      </ion-thumbnail>
+      <ion-label>
+        <a (click)="openWithSystemBrowser('https://www.facebook.com/')"><p>/St.PetersChurchGoldCoast</p></a> 
+      </ion-label>
+    </ion-item>      
+    <ion-item lines="none">
+      <ion-thumbnail slot="start">
+        <img src="./assets/images/insta.png" />
+      </ion-thumbnail>
+      <ion-label>
+        <a (click)="openWithSystemBrowser('https://www.instagram.com/')"><p>/stpetersgc</p></a> 
+      </ion-label>
+    </ion-item>     
+    <ion-item lines="none">
+      <ion-thumbnail slot="start">
+        <img src="./assets/images/location.png" />
+      </ion-thumbnail>
+      <ion-label>
+        <a (click)="openWithSystemBrowser('https://goo.gl/maps/19rgvLj3yWfqdEP87')"><p>83 Nerang St, Southport, 4215 QLD</p></a> 
+      </ion-label>
+    </ion-item>      
+
+  </ion-list>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14095.23564235721!2d153.4103971!3d-27.9691379!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1a02422cae6720bb!2sSt%20Peter&#39;s%20Anglican%20Church%20Gold%20Coast!5e0!3m2!1sen!2sau!4v1601243552412!5m2!1sen!2sau" width="400" height="500" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+</ion-content>

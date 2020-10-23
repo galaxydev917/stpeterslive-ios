@@ -24,3 +24,27 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+@font-face {
+    font-family: 'Cinzel';
+    font-style: normal;
+    font-weight: normal;
+    src: url('./assets/fonts/Cinzel-Regular.otf');
+}
+@font-face {
+  font-family: 'Cinzel-Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./assets/fonts/Cinzel-Bold.otf');
+}
+@font-face {
+  font-family: 'Quicksand-Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./assets/fonts/Quicksand-Bold.otf');
+}
+@font-face {
+  font-family: 'Quicksand-Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./assets/fonts/Quicksand-Regular.otf');
+}

@@ -1,0 +1,126 @@
+ion-title{
+    padding-inline-start: 0px;
+    padding-inline-end: 0px;
+    padding-top: 10px;
+}
+ion-checkbox{
+    margin-inline-end: 12px;
+}
+ion-icon{
+    margin-inline-end: 12px;
+}
+
+.header-background-color{
+    --background: #414278;
+    //padding-top: 10px;
+}
+h1{
+    margin-top: 0px;
+    font-family:'Cinzel-Bold';
+    color: white;
+}
+.grid_bg{
+    background: white;
+    padding: 0px 0px 0px 0px;
+}
+.header-row{
+    height: 70px;
+    background: #fe4320;
+}
+h3{
+    color: white;
+    margin-top: 0px;
+}
+// .segment-button-checked{
+//     background: #fe4320;
+//     color: white;
+// }
+.segment-row{
+    height: 100px;
+}
+.sement-button-container{
+    border-color: #fe4320;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 2px;
+}
+.segment-button {
+    --color-checked: white;
+    --background-checked: #fe4320;
+    --color:#fe4320;
+    --border-color: #fe4320;
+    --border-radius: 5px;
+    --border-style: solid;
+    --border-width: 1px;
+    --indicator-color:  #fe4320;
+}
+.select-amount-div{
+    width: 100%;
+    height: 50px;
+    border-color: gray;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: grey;
+    font-size: large;
+    margin-top: 10px;
+    &:hover{
+        border-color: #fe4320;
+        color: #fe4320;
+    }
+}
+.select-amount-col{
+    padding: 0px 10px 0px 10px;
+}
+.button-h{
+    height: 50px;
+    font-size: 14px;
+    font-weight: bold !important;
+    margin: 10px 10px 10px 10px;
+    //margin-top: 10px !important;
+    text-transform: uppercase !important;
+    --background: #fe4320;
+    color: white;
+}
+.button-payment{
+    height: 50px;
+    font-size: 14px;
+    font-weight: bold !important;
+    margin: 10px 10px 10px 10px;
+    //margin-top: 10px !important;
+    text-transform: uppercase !important;
+    --background: #2bb373;
+    color: white;
+}
+
+.line-input {
+    height: 50px;
+    margin-top: 5px !important;
+    background: transparent;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+.paymentline-input {
+    margin-bottom: 0!important;
+    padding: 0px 10px 0px 10px;
+    ion-item {
+        --background-activated: #b0daed;
+        --background-focused: #b0daed;
+        --background-hover: #b0daed;
+        --highlight-height: 0;
+        //border: 1px solid #807e7e;
+        border-radius: 5px;
+
+        &.item-has-focus {
+            border: 1px solid white;
+        }
+
+    }
+}
+.spinner{
+    display: flex;
+    justify-content: center;
+}

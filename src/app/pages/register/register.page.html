@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar class="header-background-color">
+    <ion-title class="ion-text-capitalize">
+      <h1>REGISTER</h1>
+    </ion-title>
+    <ion-buttons slot="start">
+        <ion-button (click)="back()" slot="start">
+            <ion-icon name="chevron-back" style="color: white; font-size: 40px;"></ion-icon>
+          </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="contnet-center-image" style="background-image: url('../../../assets/images/background2.png');">
+    <div class="content-overlay-bg">
+      <ion-grid>
+        <ion-row class="ion-justify-content-center ion-align-items-start">
+          <ion-col size="12" class="ion-text-center">
+            <!-- <form class="form" [formGroup]="validationsform" (ngSubmit)="tryRegister(validationsform.value)"> -->
+              <form class="form" [formGroup]="validationsform">
+
+              <ion-list class="line-input"> 
+                <ion-item mode="md">
+                  <ion-input class="ion-text-left" placeholder="Your Name" type="text" formControlName="name"></ion-input>
+                </ion-item> 
+              </ion-list>
+              <ion-list class="line-input"> 
+                <ion-item mode="md">
+                  <ion-input class="ion-text-left" placeholder="Your Email" type="text" formControlName="email"></ion-input>
+                </ion-item> 
+              </ion-list>              
+              <ion-list class="line-input"> 
+                <ion-item mode="md">
+                  <ion-input class="ion-text-left" placeholder="Phone" type="number" formControlName="phone"></ion-input>
+                </ion-item> 
+              </ion-list>      
+              <ion-list class="line-input"> 
+                <ion-item mode="md">
+                  <ion-input class="ion-text-left" placeholder="Address" type="text" formControlName="address"></ion-input>
+                </ion-item> 
+              </ion-list>    
+              <ion-list class="line-input"> 
+                <ion-item mode="md">
+                  <ion-select ok-text="Select" cancel-text="Cancel" placeholder="Which Service are you coming to" style="max-width: 100%; width: 100%;" formControlName="coming_service">
+                    <ion-select-option value="Sunday 7:00 am">Sunday 7:00 am</ion-select-option>
+                    <ion-select-option value="Sunday 9:30 am">Sunday 9:30 am</ion-select-option>
+                    <ion-select-option value="Sunday 5:45 pm">Sunday 5:45 pm</ion-select-option>
+                    <ion-select-option value="Thursday 12 noon">Thursday 12 noon</ion-select-option>
+                    <ion-select-option value="Other">Other</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>     
+              <div class="spinner" *ngIf="isLoading">
+                <ion-spinner name="crescent"></ion-spinner>
+              </div>                              
+              <ion-button class="button-h" mode="ios" type="submit"  fill="solid" size="default" [disabled]="!validationsform.valid" shape="round" expand="block">
+                Register
+              </ion-button>
+            </form>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </div>
+  </div>
+</ion-content>

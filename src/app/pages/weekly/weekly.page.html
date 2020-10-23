@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar class="header-background-color">
+    <ion-title class="ion-text-capitalize">
+      <h1>WEEKLYS</h1>
+    </ion-title>
+    <ion-buttons slot="start">
+        <ion-button (click)="back()" slot="start">
+            <ion-icon name="chevron-back" style="color: white; font-size: 40px;"></ion-icon>
+          </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="openMenu()" slot="start">
+        <ion-icon name="menu-outline" style="color: white; font-size: 32px;"></ion-icon>
+      </ion-button>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let item of weeklyList; let i = index">
+    <ion-item lines="none">
+      <ion-thumbnail slot="start">
+        <img src={{item.better_featured_image.media_details.sizes.thumbnail.source_url}}>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{item.title.rendered }}</h2>
+        <p style="font-family: 'Quicksand-Regular'; color: black;">{{item.date | date:'MMM d, y'}}</p>
+      </ion-label>
+      <ion-button size='medium'  (click)="openPDF(item)" class="button-h">
+        <ion-icon name="document-text-outline"></ion-icon>
+      </ion-button>   
+    </ion-item>
+  </ion-list>
+  <app-loading *ngIf="isLoading"></app-loading>
+
+</ion-content>

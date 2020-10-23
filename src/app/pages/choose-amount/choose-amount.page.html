@@ -1,0 +1,156 @@
+<ion-header>
+  <ion-toolbar class="header-background-color">
+    <ion-title class="ion-text-capitalize">
+      <h1>DONATIONS</h1>
+    </ion-title>
+    <ion-buttons slot="start">
+        <ion-button (click)="back()" slot="start">
+            <ion-icon name="chevron-back" style="color: white; font-size: 40px;"></ion-icon>
+          </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="openMenu()" slot="start">
+        <ion-icon name="menu-outline" style="color: white; font-size: 32px;"></ion-icon>
+      </ion-button>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="card-center-image" style="background-image: url('../../../assets/images/background2.png');">
+    <div class="card-center-bg">
+      <ion-grid class="grid_bg" *ngIf="showChooseAmount">
+        <ion-row class="ion-justify-content-center ion-align-items-center header-row">
+          <ion-col class="ion-text-center">
+            <h3>Choose amount</h3>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center ion-align-items-center segment-row" *ngIf="isPaidBefore">
+          <ion-col class="ion-text-center" size="10" >
+            <ion-segment (ionChange)="segmentChanged($event)" value="new" >
+
+              <ion-segment-button value="new" class="segment-button">
+                <ion-label>Use new</ion-label>
+              </ion-segment-button>
+              <ion-segment-button value="old" class="segment-button">
+                <ion-label>Use you have.</ion-label>
+              </ion-segment-button>              
+            </ion-segment>
+          </ion-col>
+        </ion-row>      
+        <ion-row class="ion-justify-content-center ion-align-items-center select-amount-col" *ngIf="segment_value == 'new'">
+          <ion-col size="4" *ngFor="let item of amount_options; let i = index" (click)="setAmount(item);">
+              <div class="select-amount-div">
+                {{item.text}}
+              </div>
+          </ion-col>   
+        </ion-row>   
+        <ion-row class="ion-justify-content-center ion-align-items-center select-amount-col" *ngIf="segment_value == 'new'">
+          <ion-col>
+              <ion-input class="ion-text-left line-input" type="number" placeholder="Custom amount" [(ngModel)]="custom_amount"></ion-input>
+          </ion-col>
+        </ion-row>    
+        <div class="spinner" *ngIf="isLoading">
+          <ion-spinner name="crescent"></ion-spinner>
+        </div>
+          <ion-button class="button-payment" mode="ios" fill="solid" size="default" expand="block" (click)="payWithOldInfo();" *ngIf="segment_value == 'old'">
+            Donate A$ {{beforeAmount}} 
+          </ion-button>  
+  
+        <!-- <ion-row>
+          <ion-col>
+            <ion-list>
+              <ion-item lines="none"> 
+                <ion-label>Write us a comment</ion-label>
+                <ion-checkbox slot="start"></ion-checkbox>
+              </ion-item>
+          </ion-list>
+          </ion-col>
+        </ion-row>  -->
+        <ion-button class="button-h" mode="ios" fill="solid" size="default" expand="block" (click)="next();" *ngIf="segment_value == 'new'">
+          Next
+        </ion-button>     
+        <!-- <ion-row class="ion-justify-content-center ion-align-items-center" style="height: 50px;">
+          <ion-col class="ion-text-center">
+              <a href="#"><span style="color: #fe4320;">Powered by Donorbox</span></a>
+          </ion-col>
+        </ion-row>            -->
+      </ion-grid>
+
+      <ion-grid class="grid_bg" *ngIf="showPayment">
+        <ion-row class="ion-justify-content-center ion-align-items-center header-row">
+          <ion-col size="2" class="ion-text-center">
+            <ion-icon name="arrow-back" style="color: white; font-size: 30px;" (click)="back_payment()"></ion-icon>
+          </ion-col>
+          <ion-col size="8" class="ion-text-center">
+            <h3>Payment</h3>
+          </ion-col>
+          <ion-col size="2" class="ion-text-center">
+          </ion-col>          
+        </ion-row>        
+        <ion-row class="ion-justify-content-center ion-align-items-start" [ngStyle]="{'height': rowBodyHeight}">
+          <ion-col size="12" class="ion-text-center">
+            <form class="form" #paymentForm [formGroup]="validationsform" (ngSubmit)="payWithStripe(validationsform.value)">
+              <ion-list class="paymentline-input" mode="md"> 
+                <ion-item mode="md" >
+                  <ion-icon slot="start" name="person-outline" ></ion-icon>
+                  <ion-input class="ion-text-left" type="text" placeholder="First Name" formControlName="first_name"></ion-input>
+                </ion-item> 
+              </ion-list>  
+              <ion-list class="paymentline-input" mode="md"> 
+                <ion-item mode="md" >
+                  <ion-icon slot="start" name="person-outline" ></ion-icon>
+                  <ion-input class="ion-text-left" type="text" placeholder="Last Name" formControlName="last_name"></ion-input>
+                </ion-item> 
+              </ion-list>     
+              <ion-list class="paymentline-input" mode="md"> 
+                <ion-item mode="md" >
+                  <ion-icon slot="start" name="mail-outline" ></ion-icon>
+                  <ion-input class="ion-text-left" type="text" placeholder="Email" formControlName="email"></ion-input>
+                </ion-item> 
+              </ion-list>                                         
+              <ion-list class="paymentline-input" mode="md"> 
+                <ion-item mode="md" >
+                  <ion-icon slot="start" name="card-outline" ></ion-icon>
+                  <ion-input class="ion-text-left" type="tel" maxlength="19" placeholder="Card Number" [(ngModel)]="creditCardNumber" formControlName="card_number" (ionChange)="cc_format($event.target.value)"></ion-input>
+                </ion-item> 
+              </ion-list>
+              <ion-list class="paymentline-input" mode="md"> 
+                <ion-item mode="md" >
+                  <ion-icon slot="start" name="calendar-outline" ></ion-icon>
+                  <ion-input class="ion-text-left" type="text" placeholder="Expiration mm/yy" formControlName="expiration_date" (ionChange)="changeExpirationDate($event)"></ion-input>
+                </ion-item> 
+              </ion-list>
+              
+              <ion-list class="paymentline-input" mode="md"> 
+                <ion-item mode="md" >
+                  <ion-icon slot="start" name="lock-closed-outline" ></ion-icon>
+                  <ion-input class="ion-text-left" maxlength="3" type="text" placeholder="CVC" formControlName="cvv"></ion-input>
+                </ion-item> 
+              </ion-list>     
+              <!-- <ion-list class="line-input" mode="md"> 
+                <ion-item lines="none"> 
+                  <ion-label>Make donation anonymous</ion-label>
+                  <ion-checkbox slot="start"></ion-checkbox>
+                </ion-item>
+                <ion-item lines="none"> 
+                  <ion-label>This donation is on behalf of a company</ion-label>
+                  <ion-checkbox slot="start"></ion-checkbox>
+                </ion-item>                
+              </ion-list>    -->
+              <div class="spinner" *ngIf="isLoading">
+                <ion-spinner name="crescent"></ion-spinner>
+              </div>
+              <ion-button class="button-payment" mode="ios" type="submit" [disabled]="!validationsform.valid" fill="solid" size="default" expand="block">
+                Donate A$ {{amount}} 
+              </ion-button>  
+            </form>
+       
+          </ion-col>
+        </ion-row>        
+      </ion-grid>
+    </div>
+  </div>  
+
+</ion-content>

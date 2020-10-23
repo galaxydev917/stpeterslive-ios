@@ -1,0 +1,29 @@
+ion-title{
+    padding-inline-start: 0px;
+    padding-inline-end: 0px;
+    padding-top: 5px;
+}
+ion-thumbnail{
+    width: 20px;
+    height: 20px;
+}
+.header-background-color{
+    --background: #414278;
+    //padding-top: 10px;
+}
+h1{
+    margin-top: 0px;
+    font-family:'Cinzel-Bold';
+    color: white;
+}
+a {
+    text-decoration: none;
+    display: inline-block;
+}
+p {
+    color:  #414278;
+    font-size: 16px;
+    &:hover {
+        color: grey;
+    }
+}
