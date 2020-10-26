@@ -34,13 +34,37 @@ export class FindUsPage implements OnInit {
     private iab: InAppBrowser) { }
 
   ngOnInit() {
-    let latLng = new google.maps.LatLng(-34.397, 150.644);
+    let latLng = new google.maps.LatLng(-27.969450, 153.410400);
     let mapOptions = {
       center: latLng,
       zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    this.addMarker(this.map); 
+
+  }
+  addMarker(map:any){
+
+    let marker = new google.maps.Marker({
+      map: map,
+      //animation: google.maps.Animation.BOUNCE,
+      position: map.getCenter()
+    });
+    
+    let content = "<p style='font-weight: 600; margin-block-start: 0.5em; margin-block-end: 0.5em; color:red'>St Peter's Anglican&nbsp; &nbsp;<br>Church Gold Coast</p>";
+    
+    this.addInfoWindow(marker, content);
+  }
+  addInfoWindow(marker, content){
+    let infoWindow = new google.maps.InfoWindow({
+      content: content
+    });
+    infoWindow.open(this.map, marker);
+
+    // google.maps.event.addListener(marker, 'click', () => {
+    //   infoWindow.open(this.map, marker);
+    // });
   }
   back(){
     this.location.back();

@@ -10,7 +10,7 @@ export const config = {
 
     // youtube page url
     YoutubeData: 'https://www.googleapis.com/youtube/v3',
-    YoutubeApiKey: 'AIzaSyB0zCCSVbN16Ih6JSEIMV1_wBhA_aWMZXU',
+    YoutubeApiKey: 'AIzaSyC9ut4t1yVcSoObcG5GnbtQ_1qjHYeBSv4',
     YoutubeChannelId: 'UCQqncCLZ8XekiypkJXx6DGA',
     // twitter page url
     Twitter: 'https://twitter.com',
