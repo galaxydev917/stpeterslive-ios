@@ -25,9 +25,9 @@ export class ChooseAmountPage implements OnInit {
   cardDetails: any = {};
   isLoading = false;
   creditCardNumber: string;
-  stripe_key = 'pk_live_ytOmcC2s3laNLEkeykW9tZMr';
+  //stripe_key = 'pk_live_ytOmcC2s3laNLEkeykW9tZMr';
   //stripe_key = 'pk_test_51HeAUdIOZxJaFL1c8O6uSQEerlD5kYkWGJ947CKgP22XXSd6y6uMswccb8hZx3VDLQS3rfORjVzufvLLI7J2c3qJ00AMHa2oYE';
-  //stripe_key = 'pk_test_YnaTdm8MbReXP3J7fGmWAigj';
+  stripe_key = 'pk_test_YnaTdm8MbReXP3J7fGmWAigj';
   
   public amount_options = [
     {
@@ -208,7 +208,7 @@ export class ChooseAmountPage implements OnInit {
             'Content-Type': 'application/json',
           },
           token: token,
-          amount: this.amount,
+          amount: this.amount * 100,
           currency_code: 'AUD',
           email: email
       }).subscribe(data => {

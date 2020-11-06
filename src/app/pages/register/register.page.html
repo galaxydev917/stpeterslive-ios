@@ -22,9 +22,7 @@
       <ion-grid>
         <ion-row class="ion-justify-content-center ion-align-items-start">
           <ion-col size="12" class="ion-text-center">
-            <!-- <form class="form" [formGroup]="validationsform" (ngSubmit)="tryRegister(validationsform.value)"> -->
-              <form class="form" [formGroup]="validationsform">
-
+            <form class="form" [formGroup]="validationsform" (ngSubmit)="tryRegister(validationsform.value)">
               <ion-list class="line-input"> 
                 <ion-item mode="md">
                   <ion-input class="ion-text-left" placeholder="Your Name" type="text" formControlName="name"></ion-input>
