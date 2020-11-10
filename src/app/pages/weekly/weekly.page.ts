@@ -43,6 +43,11 @@ export class WeeklyPage implements OnInit {
         this.weeklyList.push(resp[i]);
       }
       this.isLoading = false;
+      
+    },
+    (err) => {
+      console.log("weekly error message ========", err);
+      this.isLoading = false;
     });
   }
 

@@ -31,6 +31,8 @@ export class DataService {
   }
   getWeeklyInfo() {
     return this.ejectQuery<any>(`${Url}/wp-json/wp/v2/posts?categories=483`);
+    //return this.ejectQuery<any>('https://reqres.in/api/products/3');
+    
   }
   getBlogAndNewsInfo(page) {
     return this.ejectQuery<any>(`${Url}/wp-json/wp/v2/posts?categories=44&per_page=5&page=${page}`);
