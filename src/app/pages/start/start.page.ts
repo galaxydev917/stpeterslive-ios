@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { strings } from '../../config/strings';
 import { Platform } from '@ionic/angular';
+import { InAppBrowser, InAppBrowserOptions  } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
   selector: 'app-start',
@@ -9,8 +10,26 @@ import { Platform } from '@ionic/angular';
 })
 export class StartPage implements OnInit {
   rowHeight : any;
+  options : InAppBrowserOptions = {
+    location : 'yes',//Or 'no' 
+    hidden : 'no', //Or  'yes'
+    clearcache : 'yes',
+    clearsessioncache : 'yes',
+    zoom : 'yes',//Android only ,shows browser zoom controls 
+    hardwareback : 'yes',
+    mediaPlaybackRequiresUserAction : 'no',
+    shouldPauseOnSuspend : 'no', //Android only 
+    closebuttoncaption : 'Close', //iOS only
+    disallowoverscroll : 'no', //iOS only 
+    toolbar : 'yes', //iOS only 
+    enableViewportScale : 'no', //iOS only 
+    allowInlineMediaPlayback : 'no',//iOS only 
+    presentationstyle : 'pagesheet',//iOS only 
+    fullscreen : 'yes',//Windows only    
+};
   constructor(
-    public plt: Platform
+    public plt: Platform,
+    private iab: InAppBrowser
     ) { }
 
     // tslint:disable-next-line: variable-name
@@ -25,6 +44,18 @@ export class StartPage implements OnInit {
    ngOnInit() {
     this.rowHeight = (this.plt.height() - 110) / 3 + 'px';
   }
-
+  openWithSystemBrowser(url : string){
+    let target = "_system";
+    this.iab.create(url,target,this.options);
+  }
+  openWithInAppBrowser(url : string){
+    let target = "_blank";
+    this.iab.create(url,target,this.options);
+  }
+  openWithCordovaBrowser(url : string){
+    let target = "_self";
+    this.iab.create(url,target,this.options);
+  }  
 }
+
 //ionic cordova run ios --target="8009D915-4C07-43BF-B03C-F9440C9AF44B" --livereload

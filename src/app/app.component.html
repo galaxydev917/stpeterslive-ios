@@ -7,7 +7,15 @@
       <ion-content>
         <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+            <ion-item *ngIf="p.title == 'Donation'" [routerDirection]="'root'" (click)="openWithSystemBrowser('https://www.stpetersgc.com.au/make-a-donation/')">
+              <ion-thumbnail slot="start">
+                <img src={{p.icon}} />
+              </ion-thumbnail>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>            
+            <ion-item *ngIf="p.title != 'Donation'" [routerDirection]="'root'" [routerLink]="[p.url]">
               <ion-thumbnail slot="start">
                 <img src={{p.icon}} />
               </ion-thumbnail>
