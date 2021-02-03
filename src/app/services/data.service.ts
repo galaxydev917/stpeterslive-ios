@@ -17,18 +17,19 @@ export class DataService {
   page = 0;
   constructor( private http: HttpClient ) { }
   private ejectQuery<T>( query: string ) {
-    console.log("query", query);
     return this.http.get<T>( query );
   }
   getPlaylistsForChannel() {
     return this.ejectQuery<PlayListObject>(`${YoutubeDataUrl}/playlists?key=${YoutubeApikey}&channelId=${YoutubeChannelId}&part=snippet,id&maxResults=1`);
   }
-  getListVideos(listId, nextPageToken) {
+
+  getListVideos(nextPageToken) {
     if(nextPageToken)
-      return this.ejectQuery<VideoListObject>(`${YoutubeDataUrl}/playlistItems?key=${YoutubeApikey}&pageToken=${nextPageToken}&playlistId=${listId}&part=snippet,id&maxResults=5`);
+      return this.ejectQuery<VideoListObject>(`${YoutubeDataUrl}/search?key=${YoutubeApikey}&pageToken=${nextPageToken}&channelId=${YoutubeChannelId}&order=date&part=snippet,id&maxResults=5`);
     else  
-      return this.ejectQuery<VideoListObject>(`${YoutubeDataUrl}/playlistItems?key=${YoutubeApikey}&playlistId=${listId}&part=snippet,id&maxResults=5`);
+      return this.ejectQuery<VideoListObject>(`${YoutubeDataUrl}/search?key=${YoutubeApikey}&channelId=${YoutubeChannelId}&order=date&part=snippet,id&maxResults=5`);
   }
+
   getWeeklyInfo() {
     return this.ejectQuery<any>(`${Url}/wp-json/wp/v2/posts?categories=483`);
     //return this.ejectQuery<any>('https://reqres.in/api/products/3');

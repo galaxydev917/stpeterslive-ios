@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from "@angular/common";
 import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
+
 @Component({
   selector: 'app-bolg-news',
   templateUrl: './bolg-news.page.html',
@@ -15,6 +17,7 @@ export class BolgNewsPage implements OnInit {
   constructor(
     private location: Location,
     private dataService: DataService,
+    public menuCtrl: MenuController,
     private router: Router
   ) { }
 
@@ -48,5 +51,10 @@ export class BolgNewsPage implements OnInit {
     this.isLoadingMore = true;
     this.page = this.page + 1;
     this.getBlogList();
+  }
+  
+  openMenu() {
+    this.menuCtrl.enable(true, 'customMenu');
+    this.menuCtrl.open('customMenu');
   }
 }

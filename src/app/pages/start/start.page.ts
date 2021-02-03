@@ -58,4 +58,4 @@ export class StartPage implements OnInit {
   }  
 }
 
-//ionic cordova run ios --target="8009D915-4C07-43BF-B03C-F9440C9AF44B" --livereload
+//ionic cordova run ios --target="A89C1114-5C2D-40ED-A0A1-7C70CDD399E3" --livereload
